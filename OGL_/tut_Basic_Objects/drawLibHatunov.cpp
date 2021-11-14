@@ -29,21 +29,6 @@ void drafGraf() {
         glColor3f(0, 1, 0);
         glVertex2f(i, sqrt(2 + 4 * (i*i)) + 6 * i + sin(8 * (i * M_PI / 180) - 11));//13
     }
-    /*
-    for (float i = -100; i < 100; i += 0.01) {
-        glColor3f(1, 0, .25);
-        glVertex2f(i, -0.1 * (i * i) + 2 * i + 1);
-    }
-
-    for (float i = -1000; i < 1000; i += 0.01) {
-        glColor3f(1, 0, 1);
-        glVertex2f(i, -i * pow((3 + 2 * i), 2) + 3 * i + sin(2 * (i * M_PI / 180)));
-    }
-    */
-    //exp(i + 3) / tan(i), exp(i + 3) / tan(i)
-    //glVertex2f(i, pow((i + sin(i * M_PI / 180)), 3));
-    //
-    //
     glEnd();
     glPopMatrix();
 }
@@ -138,11 +123,13 @@ void DravFon()
 }
 
 //Как не страно кот
-void DravCat(float R, float G, float B, float x, float y) {
+void DravCat(float R, float G, float B, float x, float y, bool q) {
     glPushMatrix();
-
+    
     glTranslatef(x + 0.1, y + 0.1, 0);
-
+    if(q)
+        glRotatef(180, 0, 1, 0);
+    
     glBegin(GL_TRIANGLES);//хвостик
     glColor3f(R, G, B);
     glVertex2f(-.2, -.3);

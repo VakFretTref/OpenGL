@@ -3,7 +3,45 @@
 #include <cmath>
 #include "drawLibHatunov.h"
 
-void renderScene(void);//обевление функции
+float pos_x = 0, pos_y = 0;
+bool isRight = true;
+
+void renderScene(void);//обйевление функции
+
+void processKeys(unsigned char key, int x, int y)
+{
+    if (key == 100)
+    {
+        pos_x = pos_x + 0.1;
+        isRight = true;
+    }
+    if (key == 97)
+    {
+        pos_x = pos_x - 0.1;
+        isRight = false;
+    }
+    if (key == 119)
+    {
+        pos_y = pos_y + 0.1;
+    }
+    if (key == 115)
+    {
+        pos_y = pos_y - 0.1;
+    }
+    glutPostRedisplay();
+}
+
+void dravT(int x, int y) {
+    glPushMatrix();
+    glTranslatef(x + 0.1, y + 0.1, 0);
+    glBegin(GL_TRIANGLES);//хвостик
+    glColor3f(8, 0, 0);
+    glVertex2f(-.2, -.3);
+    glVertex2f(.4, .0);
+    glVertex2f(.55, -.02);
+    glEnd();
+    glPopMatrix();
+}
 
 int main(int argc, char* argv[])
 {
@@ -13,6 +51,9 @@ int main(int argc, char* argv[])
     glutInitWindowSize(600, 600);
     glutCreateWindow("OpenGL Start Applicatio");
     glutDisplayFunc(renderScene);
+
+    glutKeyboardFunc(processKeys);
+
     glutMainLoop();
     return 0;
 }
@@ -20,52 +61,7 @@ int main(int argc, char* argv[])
 void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // эта функция должна быть первой в renderScene
     
-    /*
-    DravFon();    
-    
-    glScalef(.75, .75, .75);//убрать
-    glTranslatef(-.25, -.25, 0);
+    DravCat(9, 9, 9, pos_x, pos_y, isRight);
 
-    glPushMatrix();
-
-    glPushMatrix();
-
-    glTranslatef(.0, -.62, .0);
-    DravSW(.9, .9, .9, .5, .9, .9);
-
-    glPopMatrix();
-
-    DravHome(.5, .0, .0, .5, -.42, -.42 , -.3, -.3);
-
-    glPushMatrix();
-
-    glTranslatef(.0, -.52, .0);
-    glScalef(0.9, 0.9, 0);
-    DravCar(.71, .7, .71);
-
-    glPopMatrix();
-
-    glTranslatef(.62, -.77, .0);
-    glScalef(.65, .65, .65);
-    DravCat(.9, .0, .0);
-   
-    glTranslatef(.27, -.15, .0);
-    glScalef(.65, .65, .65);
-    DravCat(1, .3, .0);
-
-    glPopMatrix();
-
-    glTranslatef(-.52, -1.05, .0);
-    glScalef(.9, .9, 0);
-    DravEll(.1, .9, .2);
-    
-    glTranslatef(.22, 1.85, .0);
-    dravSkay();
-    */
-
-    //for (int i = 0; i < 360; i += 30) DravCat(1, .3, .0, 1.75 * cos(i * M_PI / 180), 1.75 * sin(i * M_PI / 180));
-
-    drafGraf();
-    
     glutSwapBuffers(); // эта функция должна быть последний в renderScene
 }
