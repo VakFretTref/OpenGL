@@ -7,7 +7,7 @@
 //красивая пружинка
 //glVertex2f(350 * sin(5 * i * M_PI / 180 + 20), 500 * sin(1.5 * i * M_PI / 180 - 3));
 
-//Рисование графикоф
+// задание номер 11?
 float  fun(float x) {//D
     float y;
 
@@ -21,6 +21,7 @@ float  fun(float x) {//D
     return y;
 }
 
+//Рисование графикоф
 void drafGraf() {
     glPushMatrix();
     glBegin(GL_LINES);
