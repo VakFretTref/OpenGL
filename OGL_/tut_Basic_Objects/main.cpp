@@ -3,10 +3,10 @@
 #include <cmath>
 #include "drawLibHatunov.h"
 
-float pos_x = 0, pos_y = 0;
+float pos_x = 0, pos_y = 0, angel = 0;
 bool isRight = true;
 
-void renderScene(void);//обйевление функции
+void renderScene(void);//объявление функции
 
 void processKeys(unsigned char key, int x, int y)
 {
@@ -20,6 +20,14 @@ void processKeys(unsigned char key, int x, int y)
         pos_x = pos_x - 0.1;
         isRight = false;
     }
+    if (key == 113)
+    {
+        angel += 5;
+    }
+    if (key == 101)
+    {
+        angel -= 5;
+    }
     if (key == 119)
     {
         pos_y = pos_y + 0.1;
@@ -29,18 +37,6 @@ void processKeys(unsigned char key, int x, int y)
         pos_y = pos_y - 0.1;
     }
     glutPostRedisplay();
-}
-
-void dravT(int x, int y) {
-    glPushMatrix();
-    glTranslatef(x + 0.1, y + 0.1, 0);
-    glBegin(GL_TRIANGLES);//хвостик
-    glColor3f(8, 0, 0);
-    glVertex2f(-.2, -.3);
-    glVertex2f(.4, .0);
-    glVertex2f(.55, -.02);
-    glEnd();
-    glPopMatrix();
 }
 
 int main(int argc, char* argv[])
@@ -61,7 +57,8 @@ int main(int argc, char* argv[])
 void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // эта функция должна быть первой в renderScene
     
-    DravCat(9, 9, 9, pos_x, pos_y, isRight);
+    //DravCat(9, 9, 9, pos_x, pos_y, isRight, angel);
+    drafGraf();
 
     glutSwapBuffers(); // эта функция должна быть последний в renderScene
 }

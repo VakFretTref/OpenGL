@@ -8,6 +8,19 @@
 //glVertex2f(350 * sin(5 * i * M_PI / 180 + 20), 500 * sin(1.5 * i * M_PI / 180 - 3));
 
 //Рисование графикоф
+float  fun(float x) {//D
+    float y;
+
+    if (x > 1)
+        y = 3 * x - 7;
+    else if (x < 1)
+        y = 3 * fabs(x + 2) - 7;
+    else
+        y = 1;
+
+    return y;
+}
+
 void drafGraf() {
     glPushMatrix();
     glBegin(GL_LINES);
@@ -25,9 +38,9 @@ void drafGraf() {
     glScalef(.05, .05, 1);
     glBegin(GL_LINE_STRIP);
 
-    for (float i = -100; i < 100; i += 0.01) {
+    for (float i = -1000; i < 1000; i += 1) {
         glColor3f(0, 1, 0);
-        glVertex2f(i, sqrt(2 + 4 * (i*i)) + 6 * i + sin(8 * (i * M_PI / 180) - 11));//13
+        glVertex2f(i, fun(i));
     }
     glEnd();
     glPopMatrix();
@@ -123,13 +136,14 @@ void DravFon()
 }
 
 //Как не страно кот
-void DravCat(float R, float G, float B, float x, float y, bool q) {
+void DravCat(float R, float G, float B, float x, float y, bool q, float angel) {
     glPushMatrix();
     
     glTranslatef(x + 0.1, y + 0.1, 0);
+    glRotatef(angel, 0, 0, 1);
     if(q)
         glRotatef(180, 0, 1, 0);
-    
+
     glBegin(GL_TRIANGLES);//хвостик
     glColor3f(R, G, B);
     glVertex2f(-.2, -.3);
