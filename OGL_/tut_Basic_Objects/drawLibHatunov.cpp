@@ -139,7 +139,8 @@ void DravFon()
 //Как не страно кот
 void DravCat(float R, float G, float B, float x, float y, bool q, float angel) {
     glPushMatrix();
-    
+    //glScalef(0.5, 0.5, 1);
+
     glTranslatef(x + 0.1, y + 0.1, 0);
     glRotatef(angel, 0, 0, 1);
     if(q)
@@ -206,8 +207,10 @@ void DravCat(float R, float G, float B, float x, float y, bool q, float angel) {
 }  // Как не страно кот
 
 //Как не страно Машина
-void DravCar(float R, float G, float B) {
+void DravCar(float R, float G, float B, float x, float y) {
     glPushMatrix();
+    glTranslatef(x, y, 1);
+    glScalef(0.5, 0.5, 1);
     glBegin(GL_QUADS);
     //колесо Л
     glColor3f(.61, .63, .61);
