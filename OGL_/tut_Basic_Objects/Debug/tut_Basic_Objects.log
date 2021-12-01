@@ -1,9 +1,8 @@
 ﻿  main.cpp
-C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(17,23): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(22,23): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(35,23): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(39,23): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(83,34): warning C4305: аргумент: усечение из "double" в "float"
-C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(86,35): warning C4305: аргумент: усечение из "double" в "float"
-C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(89,34): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(11,20): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(12,20): warning C4305: инициализация: усечение из "double" в "float"
+C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(23,23): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(28,23): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(41,23): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\tut_Basic_Objects\main.cpp(45,23): warning C4244: =: преобразование "double" в "float", возможна потеря данных
   tut_Basic_Objects.vcxproj -> C:\Users\Win10Pro\Documents\GitHub\OpenGL\OGL_\Debug\tut_Basic_Objects.exe

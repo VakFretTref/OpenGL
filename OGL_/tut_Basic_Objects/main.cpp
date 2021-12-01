@@ -3,7 +3,13 @@
 #include <cmath>
 #include "drawLibHatunov.h"
 
-float pos_x = 0, pos_y = 0, angel = 0;
+int apple = 0;
+bool Win = false;
+float pos_x = 0,
+      pos_y = 0,
+      angel = 0,
+      apple_x = 0.6,
+      apple_y = 0.8;
 bool isRight = true;
 bool isGetFlower[3] = {false, false, false};
 
@@ -40,27 +46,24 @@ void processKeys(unsigned char key, int x, int y)
     }
     
     //логика повидения
-    if ((pos_x >= 0.6) && (pos_x <= 1.1) &&
-        (pos_y <= -0.5) && (pos_y >= -0.8))
+    if ((pos_x >= apple_x - 0.2) && (pos_x <= apple_x + 0.2) &&
+        (pos_y <= apple_y + 0.2) && (pos_y >= apple_y - 0.2))
     {
-        isGetFlower[0] = true;
+        apple++;
+        Win = apple == 10;
+        apple_x = 2 * (float)rand() / RAND_MAX - 1;
+        apple_y = 2 * (float)rand() / RAND_MAX - 1;
     }
-    if ((pos_x <= -0.8) && (pos_x >= -1.2) &&
-        (pos_y >= 0.7) && (pos_y <= 1.0))
-    {
-        isGetFlower[1] = true;
-    }
-    if ((pos_x >= 0.6) && (pos_x <= 1.2) &&
-        (pos_y >= 0.7) && (pos_y <= 1.2))
-    {
-        isGetFlower[2] = true;
-    }
-    
+
+    if (Win)
+        exit(0);//доп
+
     glutPostRedisplay();
 }
 
 int main(int argc, char* argv[])
 {
+    srand(0);
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(605, 200);
@@ -79,17 +82,8 @@ void renderScene(void) {
     
     DravCat(9, 9, 9, pos_x, pos_y, isRight, angel);
 
-    if (!isGetFlower[0])
-        DravCar(1, 1, 1, 0.6,-0.8);
+    DravCar(1, 1, 1, apple_x, apple_y);
 
-    if (!isGetFlower[1])
-        DravCar(1, 1, 1, -1.1, 0.8);
-
-    if (!isGetFlower[2])
-        DravCar(1, 1, 1, 0.6, 0.8);
-
-    if (isGetFlower[0] && isGetFlower[1] && isGetFlower[2])
-            dravSkay();
     //drafGraf();
 
     glutSwapBuffers(); // эта функция должна быть последний в renderScene
