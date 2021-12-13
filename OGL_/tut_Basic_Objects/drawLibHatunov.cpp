@@ -3,8 +3,6 @@
 //glRotatef(a,x,y,z);  -  поворот фигуры
 //glScalef(x,y,z);  -  маштаб фигуры
 //A * sin(w * i + f) A-амплетуда, f - фазовый здвиг, w(i) - чистота
-//
-//красивая пружинка
 //glVertex2f(350 * sin(5 * i * M_PI / 180 + 20), 500 * sin(1.5 * i * M_PI / 180 - 3));
 
 // задание номер 11?
@@ -48,7 +46,7 @@ void drafGraf() {
 }
 
 //самолёт
-void dravSkay() {
+void dravPlane(Fig Plane) {
     glPushMatrix();
     glBegin(GL_TRIANGLES);
     //хвост 1
@@ -104,11 +102,11 @@ void dravSkay() {
 }
 
 //Фон
-void DravFon()
+void DravFon(Fig sky)
 {
     glBegin(GL_QUADS);
 
-    glColor3f(.1, .6, .0);
+    glColor3f(sky.color[0], sky.color[1], sky.color[2]);//.1, .6, .0
     glVertex2f(1., -.35);
     glVertex2f(-1., -.35);
     glVertex2f(-1., -1.);
@@ -137,17 +135,17 @@ void DravFon()
 }
 
 //Как не страно кот
-void DravCat(float R, float G, float B, float x, float y, bool q, float angel) {
+void DravCat(bool q, Fig cat) {
     glPushMatrix();
     //glScalef(0.5, 0.5, 1);
 
-    glTranslatef(x + 0.1, y + 0.1, 0);
-    glRotatef(angel, 0, 0, 1);
+    glTranslatef(cat.x + 0.1, cat.y + 0.1, 0);
+    glRotatef(cat.angel, 0, 0, 1);
     if(q)
         glRotatef(180, 0, 1, 0);
 
     glBegin(GL_TRIANGLES);//хвостик
-    glColor3f(R, G, B);
+    glColor3f(cat.color[0], cat.color[0], cat.color[0]);
     glVertex2f(-.2, -.3);
     glVertex2f(.4, .0);
     glVertex2f(.55, -.02);
@@ -207,9 +205,9 @@ void DravCat(float R, float G, float B, float x, float y, bool q, float angel) {
 }  // Как не страно кот
 
 //Как не страно Машина
-void DravCar(float R, float G, float B, float x, float y) {
+void DravCar(Fig car) {
     glPushMatrix();
-    glTranslatef(x, y, 1);
+    glTranslatef(car.x, car.y, 1);
     glScalef(0.5, 0.5, 1);
     glBegin(GL_QUADS);
     //колесо Л
@@ -225,7 +223,7 @@ void DravCar(float R, float G, float B, float x, float y) {
     glVertex2f(.3, -.12);
     glVertex2f(.22, -.04);
     //Корпус
-    glColor3f(R, G, B);//71 7 71
+    glColor3f(car.color[0], car.color[1], car.color[2]);//71 7 71
     glVertex2f(.2, .0);
     glVertex2f(.78, .0);
     glVertex2f(.78, .24);
@@ -247,22 +245,22 @@ void DravCar(float R, float G, float B, float x, float y) {
 };
 
 //Как не страно дом
-void DravHome(float y1, float y2, float y3, float y4, float x1, float x2, float x3, float x4, float x, float y)
+void DravHome(Fig home)
 {
     glPushMatrix();
 
     glScalef(.8, .8, 1);
-    glTranslatef(x + 0.7, y - 0.7, 0);
+    glTranslatef(home.x + 0.7, home.y - 0.7, 0);
 
     glBegin(GL_QUADS);
     //труба дома
     glColor3f(.9, .9, .9);
-    glVertex2f(x1, y1);//-42 5
+    glVertex2f(-42, 5);//-42 5
     glColor3f(.5, .5, .5);
-    glVertex2f(x2, y2);//-42 0
+    glVertex2f(-42, 0);//-42 0
     glColor3f(.9, .9, .9);
-    glVertex2f(x3, y3);//-3 0
-    glVertex2f(x4, y4);//-3 5
+    glVertex2f(-3, 0);//-3 0
+    glVertex2f(-3, 5);//-3 5
     glEnd();
     //Дом
     glScalef(1.3, 1.3, 1.3);
@@ -311,12 +309,12 @@ void DravHome(float y1, float y2, float y3, float y4, float x1, float x2, float 
 }
 
 //кораблик
-void DravSW(float R, float G, float B, float R2, float G2, float B2, float x, float y)
+void DravSW(Fig sw)
 {
     glPushMatrix();
 
     glTranslatef(-1.0, -1.35, 0);
-    glTranslatef(x, y, 0);
+    glTranslatef(sw.x, sw.y, 0);
 
     glBegin(GL_QUADS);
     //корпус коробля
@@ -334,12 +332,12 @@ void DravSW(float R, float G, float B, float R2, float G2, float B2, float x, fl
     glEnd();
     glBegin(GL_TRIANGLES);
     //флаг 1
-    glColor3f(R, G, B);
+    glColor3f(sw.color[0], sw.color[1], sw.color[2]);
     glVertex2f(.59, .97);
     glVertex2f(.59, .6);
     glVertex2f(.71, .62);
     //флаг 2
-    glColor3f(R2, G2, B2);
+    glColor3f(sw.color[0] - .3, sw.color[1] - .1, sw.color[2] - .5);
     glVertex2f(.55, .97);
     glVertex2f(.55, .6);
     glVertex2f(.32, .70);
@@ -349,11 +347,11 @@ void DravSW(float R, float G, float B, float R2, float G2, float B2, float x, fl
 }
 
 //Ёлка
-void DravEll(float R, float G, float B, float x, float y)
+void DravEll(Fig ell)
 {
     glPushMatrix();
     glTranslatef(-1.0, -.58, 0);
-    glTranslatef(x, y, 0);
+    glTranslatef(ell.x, ell.y, 0);
 
     glBegin(GL_QUADS);
 
@@ -367,17 +365,17 @@ void DravEll(float R, float G, float B, float x, float y)
 
     glBegin(GL_TRIANGLES);
 
-    glColor3f(R, G, B);
+    glColor3f(ell.color[0], ell.color[1], ell.color[2]);
     glVertex2f(.3, .5);
     glVertex2f(.7, .5);
     glVertex2f(.5, .7);
 
-    glColor3f(R, G, B);
+    glColor3f(ell.color[0], ell.color[1], ell.color[2]);
     glVertex2f(.3, .7);
     glVertex2f(.7, .7);
     glVertex2f(.5, .9);
 
-    glColor3f(R, G, B);
+    glColor3f(ell.color[0], ell.color[1], ell.color[2]);
     glVertex2f(.3, .9);
     glVertex2f(.7, .9);
     glVertex2f(.5, 1.1);
