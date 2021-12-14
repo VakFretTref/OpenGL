@@ -145,7 +145,7 @@ void DravCat(bool q, Fig cat) {
         glRotatef(180, 0, 1, 0);
 
     glBegin(GL_TRIANGLES);//хвостик
-    glColor3f(cat.color[0], cat.color[0], cat.color[0]);
+    glColor3f(cat.color[0], cat.color[1], cat.color[2]);
     glVertex2f(-.2, -.3);
     glVertex2f(.4, .0);
     glVertex2f(.55, -.02);

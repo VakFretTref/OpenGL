@@ -84,17 +84,17 @@ void renderScene(void) {
     Cat.x = pos_x;
     Cat.y = pos_y;
     Cat.angel = angel;
-    Cat.color[0] = 9;
-    Cat.color[1] = 9;
-    Cat.color[2] = 9;
+    Cat.color[0] = .9;
+    Cat.color[1] = .9;
+    Cat.color[2] = .9;
     DravCat(isRight, Cat);
 
     Fig Car;
     Car.x = apple_x;
     Car.y = apple_y;
-    Car.color[0] = 71;
-    Car.color[1] = 7;
-    Car.color[2] = 71;
+    Car.color[0] = .71;
+    Car.color[1] = .7;
+    Car.color[2] = .71;
     DravCar(Car);
 
     glutSwapBuffers(); // эта функция должна быть последний в renderScene
